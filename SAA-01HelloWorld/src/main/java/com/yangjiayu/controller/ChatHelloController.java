@@ -1,6 +1,7 @@
 package com.yangjiayu.controller;
 
 import jakarta.annotation.Resource;
+import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +22,12 @@ public class ChatHelloController {
     // @Resouce(name="ollamaChatModel") 使用@Qualifier
     @Resource // 对话模型，调用阿里云百炼平台
     private ChatModel chatModel;
+
+//    // 不支持自动注入，只能手动注入
+//    @Resource
+//    private ChatClient chatClient;
+
+
 
     /**
      * 通用调用

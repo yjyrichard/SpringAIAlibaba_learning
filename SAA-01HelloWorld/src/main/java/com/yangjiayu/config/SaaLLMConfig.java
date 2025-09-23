@@ -1,6 +1,8 @@
 package com.yangjiayu.config;
 
 import com.alibaba.cloud.ai.dashscope.api.DashScopeApi;
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,5 +36,9 @@ public class SaaLLMConfig {
 //        return DashScopeApi.builder().apiKey(System.getenv("ALI_BAILIAN")).build();
 //    }
 
+    @Bean
+    public ChatClient chatClient(ChatModel dashScopeChatModel){
+        return ChatClient.builder(dashScopeChatModel).build();
+    }
 
 }
