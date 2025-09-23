@@ -12,10 +12,10 @@ import org.springframework.ai.chat.model.ChatModel;
  */
 public class ChatClientControllerV2 {
 
-    @Resource
+    @Resource(name = "qwen")
     private ChatModel chatModel;
 
-    @Resource
+    @Resource(name = "chatClient")
     private ChatClient dashScopeChatClientV2;
 
     // 同时存在 混合使用

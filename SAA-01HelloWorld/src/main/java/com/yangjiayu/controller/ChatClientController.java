@@ -3,6 +3,7 @@ package com.yangjiayu.controller;
 import jakarta.annotation.Resource;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +23,7 @@ public class ChatClientController {
      * ChatClient不支持自动输入
      * @param dashScopeChatModel
      */
-    public ChatClientController(ChatModel dashScopeChatModel) {
+    public ChatClientController(@Qualifier("qwen") ChatModel dashScopeChatModel) {
         this.dashScopeChatClient = ChatClient.builder(dashScopeChatModel).build();
 
     }

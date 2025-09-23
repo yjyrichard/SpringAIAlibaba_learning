@@ -20,7 +20,7 @@ public class ChatHelloController {
 
     // 不要导错 这个导入springai
     // @Resouce(name="ollamaChatModel") 使用@Qualifier
-    @Resource // 对话模型，调用阿里云百炼平台
+    @Resource(name = "qwen") // 对话模型，调用阿里云百炼平台
     private ChatModel chatModel;
 
 //    // 不支持自动注入，只能手动注入
