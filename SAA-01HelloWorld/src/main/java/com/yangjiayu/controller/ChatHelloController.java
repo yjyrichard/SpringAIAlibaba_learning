@@ -18,6 +18,7 @@ import reactor.core.publisher.Flux;
 public class ChatHelloController {
 
     // 不要导错 这个导入springai
+    // @Resouce(name="ollamaChatModel") 使用@Qualifier
     @Resource // 对话模型，调用阿里云百炼平台
     private ChatModel chatModel;
 
@@ -42,5 +43,7 @@ public class ChatHelloController {
         Flux<String> result = chatModel.stream(msg);
         return result;
     }
+
+
 
 }
