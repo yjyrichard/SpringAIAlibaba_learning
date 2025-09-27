@@ -46,6 +46,7 @@ public class RAGController {
             .build();
 
         return chatClient.prompt().system(systemInfo).user(msg).advisors(advisor).stream().content();
+
     }
 
 }

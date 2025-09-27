@@ -4,6 +4,7 @@ import com.alibaba.cloud.ai.dashscope.api.DashScopeApi;
 import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatModel;
 import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatOptions;
 import com.alibaba.cloud.ai.memory.redis.RedisChatMemoryRepository;
+import com.yangjiayu.tools.DateTimeTools;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
@@ -47,7 +48,9 @@ public class SaaLLMConfig {
 
     @Bean(name = "deepseekChatClient")
     public ChatClient deepSeekChatClient(@Qualifier("deepseek")ChatModel deepSeek){
-        return ChatClient.builder(deepSeek).defaultOptions(ChatOptions.builder().model(DEEPSEEK_MODEL).build())
+        return ChatClient.builder(deepSeek)
+            .defaultTools(new DateTimeTools())   // 关键：在这里注册
+            .defaultOptions(ChatOptions.builder().model(DEEPSEEK_MODEL).build())
         .build();
     }
 

@@ -107,6 +107,5 @@ public class InitVectorDatabaseConfig {
             // 哈希值已经存在 说明内容没有发送变化，跳过向量化操作。
             System.out.println("内容未发生改变，跳过向量化操作");
         }
-
     }
 }
