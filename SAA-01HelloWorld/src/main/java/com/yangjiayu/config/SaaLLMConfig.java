@@ -10,6 +10,7 @@ import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.ChatOptions;
+import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -53,6 +54,14 @@ public class SaaLLMConfig {
             .defaultOptions(ChatOptions.builder().model(DEEPSEEK_MODEL).build())
         .build();
     }
+
+    @Bean(name = "mcp")
+    public ChatClient chatClient1(@Qualifier("deepseek")ChatModel chatModel, ToolCallbackProvider tools){
+        return ChatClient.builder(chatModel)
+            .defaultToolCallbacks(tools.getToolCallbacks()) // mcp协议 配置见yml文件
+            .build();
+    }
+
 
 //    @Bean(name = "qwenChatClient")
 //    public ChatClient qwenChatClient(@Qualifier("qwen")ChatModel qwen){
@@ -99,6 +108,8 @@ public class SaaLLMConfig {
     public ChatClient chatClient(@Qualifier("dashscopeChatModel") ChatModel dashScopeChatModel){
         return ChatClient.builder(dashScopeChatModel).build();
     }
+
+
 
 
 

@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>SAA-01HelloWorld</module>
+        <module>LocalMcpServer</module>
     </modules>
 
     <properties>
